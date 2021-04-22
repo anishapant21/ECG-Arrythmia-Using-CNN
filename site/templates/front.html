@@ -1,0 +1,308 @@
+<html>
+    <div class="head">
+        <h1> ECG Monitoring System</h1>
+    </div>
+    <div class="container">
+        <div id="trial">
+            <svg  version="1.2" height="200" width="600" xmlns="http://www.w3.org/2000/svg"
+                viewport="0 0 60 60" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <path  
+                      d="M0,90 L50,90 
+                        M50,90 Q58,60 62,87 
+                        T65,95 66,88 70,92 t6,35 7,-60
+                        T90,127 97,107 s2,-11 10,-10 1,1 8,-10
+                        T119,95 c6,4 8,-6 10,-17 s2,-10 9,11 h53
+                       "
+            stroke="rgba(55,155,255,0.1)" fill="none" stroke-width="1" />  
+              <path  
+                      d="M0,90 L50,90 
+                        M50,90 Q58,60 62,87 
+                        T65,95 66,88 70,92 t6,35 7,-60
+                        T90,127 97,107 s2,-11 10,-10 1,1 8,-10
+                        T119,95 c6,4 8,-6 10,-17 s2,-10 9,11 h53 
+                        "
+            id="pulse" stroke="/*#00AEAA*/rgba(0,170,174,0.5)" fill="none" stroke-width="1"
+                      />  
+            </svg>
+              
+             
+             </div>
+    
+       <div class="format">
+        <div id="form-main">
+            <div id="form-div">
+              <form action="http://127.0.0.1:5000/" class="form" method="POST" id="form1" novalidate="novalidate">
+                
+                <p class="name">
+                  <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Name" id="name" />
+                </p>
+                
+                <p class="email">
+                  <input name="email" type="text" class="validate[required,custom[email]] feedback-input" id="email" placeholder="Email" />
+                </p>
+
+                <p class="age">
+                    <input name="age" type="number" class="validate[required,custom[age]] feedback-input" id="age" placeholder="age" />
+                  </p>
+
+                
+               
+                
+                <div class="submit">
+                     <button input type="submit" id="button-blue" value="submit"> Login  </button> 
+                     
+                 
+                  <div class="ease"></div>
+                </div>
+              </form>
+            </div>
+          
+          
+          
+          
+       </div>
+    </div>
+   
+  <style>
+      .head{
+    color: aquamarine;
+    display: flex;
+    padding-left: 550px;
+    padding-top:20px;
+    justify-self: center;
+}
+
+
+
+      body{
+  background: black;
+}
+
+
+
+.container{
+    display: inline-flex;
+}
+#trial {
+    padding-left: 20px;
+    padding-top: 40px;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0;
+  position: relative; }
+svg {
+    padding-top: 100px;
+    padding-left: 200px;
+  width: 80%;
+  height: 80%;
+}
+ #pulse{
+  stroke-dasharray:670;
+  stroke-dashoffset:;
+  -webkit-animation: dash 1s infinite linear forwards;
+}
+@-webkit-keyframes dash{
+  from{
+    stroke-dashoffset:670;
+  }
+  to {
+    stroke-dashoffset:-670;
+    
+  }
+  
+}
+
+.format{
+    padding-top: 30px;
+    padding-left:80px;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+html{    background:url(http://thekitemap.com/images/feedback-img.jpg) no-repeat;
+  background-size: cover;
+  height:100%;
+}
+
+#feedback-page{
+  text-align:center;
+}
+
+#form-main{
+  width:100%;
+  float:left;
+  padding-top:50px;
+  
+}
+
+#form-div {
+  background-color:rgba(72,72,72,0.4);
+  padding-left:35px;
+  padding-right:35px;
+  padding-top:40px;
+  padding-bottom:50px;
+  width: 450px;
+  float: left;
+  left: 50%;
+  position: absolute;
+  margin-top:30px;
+  margin-left: -260px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+}
+
+.feedback-input {
+  color:#3c3c3c;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+  font-size: 18px;
+  border-radius: 0;
+  line-height: 22px;
+  background-color: #fbfbfb;
+  padding: 13px 13px 13px 54px;
+  margin-bottom: 10px;
+  width:100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 3px solid rgba(0,0,0,0);
+}
+
+.feedback-input:focus{
+  background: #fff;
+  box-shadow: 0;
+  border: 3px solid #3498db;
+  color: #3498db;
+  outline: none;
+  padding: 13px 13px 13px 54px;
+}
+
+.focused{
+  color:#30aed6;
+  border:#30aed6 solid 3px;
+}
+
+/* Icons ---------------------------------- */
+#name{
+  background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+  background-size: 30px 30px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+#name:focus{
+  background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+  background-size: 30px 30px;
+  background-position: 8px 5px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+#email{
+  background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+  background-size: 30px 30px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+#email:focus{
+  background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+  background-size: 30px 30px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+#comment{
+ 
+  background-size: 30px 30px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    line-height: 150%;
+    resize:vertical;
+}
+
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+  background-color:white;
+}
+
+#button-blue{
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  float:left;
+  width: 100%;
+  border: #fbfbfb solid 4px;
+  cursor:pointer;
+  background-color: #3498db;
+  color:white;
+  font-size:24px;
+  padding-top:22px;
+  padding-bottom:22px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+}
+
+#button-blue:hover{
+  background-color: rgba(0,0,0,0);
+  color: #0493bd;
+}
+.submit{
+    text-indent: 180px;
+    text-decoration: none;
+}
+  
+.submit:hover {
+  color: #3498db;
+}
+
+.a{
+    text-decoration: none;
+    background-color: transparent;
+}
+
+  
+.ease {
+  width: 0px;
+  height: 74px;
+  background-color: #fbfbfb;
+  -webkit-transition: .3s ease;
+  -moz-transition: .3s ease;
+  -o-transition: .3s ease;
+  -ms-transition: .3s ease;
+  transition: .3s ease;
+}
+
+.submit:hover .ease{
+  width:100%;
+  background-color:white;
+}
+
+@media only screen and (max-width: 580px) {
+  #form-div{
+    left: 3%;
+    margin-right: 3%;
+    width: 88%;
+    margin-left: 0;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+}
+
+
+
+
+
+  </style>       
+  
+  
+  
+</html>

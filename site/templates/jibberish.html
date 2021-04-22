@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html>
+<!--
+ <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title> ECG monitoring</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/home/anisha/Desktop/ECG/site/css/style.css">
+        
+    </head>
+-->
+
+   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width", initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@800&display=swap" rel="stylesheet">
+        <div class="jombotron">
+            <div class ="container">
+
+       <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <script src='https://cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js' > </script>
+        <script src='https://cdn.datatables.net/responsive/1.0.4/js/dataTables.responsive.js' > </script>
+        <script src='https://cdn.datatables.net/responsive/1.0.4/js/dataTables.responsive.js' > </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js" ></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link>
+
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+        <link rel="'stylesheet" href="https://cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/1.0.4/css/dataTables.responsive.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" /> 
+
+        
+
+
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script> 
+        
+        
+        <title> ECG monitoring</title>
+
+
+        <style>
+            body{
+    font-family: 'poppins', sans-serif;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-fontt-smoothing:antialised;
+}
+
+header{
+    
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 95%, 0% 100% );
+
+
+
+}
+
+.container{
+    max-width: 1152px;
+    padding:0 15px;
+    margin:0 auto;
+}
+
+h1{
+	display: flex;
+	align-items: center;
+	justify-content:center;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	text-decoration: none;
+    text-transform: uppercase;
+    transition:all .3s ease;
+	position: center;
+
+  
+
+}
+
+h1:hover{
+	color: #898989;
+}
+
+h2{
+	color: #161616;
+	font-size: 25px;
+}
+
+
+#plot {
+  height: 400px;
+  width: 90%;
+  box-shadow: 5px 5px 5px #888888;
+  border-style: solid;
+  border-width: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  display: block;
+}
+</style>
+
+    
+    </head> 
+
+
+    <body>
+        <header>
+            <div class="container">
+             <h1> ECG monitoring </h1>
+             
+                <h2>Name:</h2>
+                <h2> Age: </h2>
+        </div>
+        </header>
+        
+<!--
+        <div id="chart"></div>
+        <script>
+             var time=[];
+            var ecgValues=[];
+            {% for data in datas %}
+                var dates=new Date('{{ data.record_date}}');
+                time.push(dates.getMinutes());
+                ecgValues.push({{data.value}});
+            {% endfor %}
+            
+
+            Plotly.plot('chart',[{
+                y:[ecgValues],
+                type:'line'
+            }]);
+            
+            var cnt = 0;
+            setInterval(function(){
+                Plotly.extendTraces('chart',{ y:[[ecgValues]]}, [0]);
+                cnt++;
+                if(cnt > 500) {
+                    Plotly.relayout('chart',{
+                        xaxis: {
+                            range: [cnt-500,cnt]
+                        }
+                    });
+                }
+            },15);
+        </script>
+
+    -->
+
+    
+        
+   
+
+<!--
+
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+
+
+    <script>
+    var time=[];
+    var ecgValues=[];
+    {% for data in datas %}
+    var dates=new Date('{{ data.record_date}}');
+    time.push(dates.getMinutes());
+    ecgValues.push({{data.value}});
+    {% endfor %}
+    var ctx =document.getElementById("myChart");
+    var myChart=new Chart( ctx, { type:'line', data:{labels:time, datasets:[{data:ecgValues, label:" ECG ", borderColor:"#324512", fill: false},]}});
+    window.setInterval(myChart, 500)
+   </script>
+-->
+
+
+<!--
+<div id="plot">
+</div>
+
+<script>
+var rt_plot = new sigplot.Plot(document.getElementById('plot'), {
+  autohide_readout: true, // only show the readout when the mouse is over the plot
+  autohide_panbars: true // only show panbars when necessary and the mouse is over the plot
+})
+
+var lyr1 = rt_plot.overlay_array([], {
+  file_name: "random1"
+});
+var lyr2 = rt_plot.overlay_array([], {
+  file_name: "random2"
+});
+
+function update_rtplot() {
+  var random1 = [];
+  var random2 = [];
+  for (var i = 0; i <= 1000; i += 1) {
+    random1.push(Math.random());
+    random2.push(Math.random() + 1)
+  }
+
+  rt_plot.reload(lyr1, random1);
+  rt_plot.reload(lyr2, random2);
+
+}
+
+var hdl = window.setInterval(update_rtplot, 500);
+
+
+</script>
+-->
+
+
+<!--
+
+<script>
+    var time=[];
+          var ecgValues=[];
+          var sampleValue=[];
+          {% for data in datas %}
+              var dates=new Date('{{ data.record_date}}');
+              time.push(dates.getMinutes());
+              ecgValues.push({{data.value}});
+              sampleValue.push{{data.sample_number}}
+          {% endfor %}
+window.onload = function () {
+
+var dps = []; // dataPoints
+var chart = new CanvasJS.Chart("chartContainer", {
+  title :{
+      text: "ECG"
+  },
+  data: [{
+      type: "line",
+      dataPoints: dps
+  }]
+});
+
+var xVal = 0;
+//var yVal = 100; 
+var updateInterval = 20;
+var dataLength = 4000; // number of dataPoints visible at any point
+
+var updateChart = function (count) {
+
+  count = count || 1;
+
+  for (var j = 0; j < count; j++) {
+      yVal =  ecgValues[j];
+      //xval=j;
+      dps.push({
+          x: xVal,
+          y: yVal
+      });
+      xVal++;
+  }
+
+  if (dps.length > dataLength) {
+      dps.shift();
+  }
+
+  chart.render();
+};
+
+updateChart(dataLength);
+setInterval(function(){updateChart()}, updateInterval);
+
+}
+</script>
+
+    </body>
+   
+    
+</html>
+
+-->

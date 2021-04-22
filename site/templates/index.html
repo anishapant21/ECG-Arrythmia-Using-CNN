@@ -1,0 +1,258 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    {% include "navbar.html"%}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width", initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@800&display=swap" rel="stylesheet">
+    <div class="jombotron">
+     <div class ="container">
+
+        <script>
+            var time=[];
+                  var ecgValues=[];
+                  var sampleValues=[];
+                  var resultValues=[];
+                  
+                  {% for data in datas %}
+                      var dates=new Date('{{ data.record_date}}');
+                      time.push(dates.getMinutes());
+                      ecgValues.push({{data.value}});
+                      sampleValues.push({{data.sample_number}});
+                      resultValues.push({{data.result}});
+                  {% endfor %} 
+
+                
+        window.onload = function () {
+        
+        var dps = []; // dataPoints
+        var chart = new CanvasJS.Chart("chartContainer", {
+          title :{
+              text: "ECG"
+          },
+          data: [{
+              type: "line",
+              dataPoints: dps
+          }]
+        });
+        
+        var xVal = 0;
+        //var yVal = 100; 
+        var updateInterval = 1;
+        var dataLength = 400;
+        var datamain=400; // number of dataPoints visible at any point
+        var lenbabe=ecgValues.length
+        console.log(lenbabe)
+        
+        var updateChart = function (pele, count) {
+        
+          count = count || 1;
+        
+          for (var j = pele; j < count; j++) {
+              yVal =  ecgValues[j];
+              //xval=j;
+              dps.push({
+                  x: xVal,
+                  y: yVal
+              });
+              xVal++;
+          }
+        
+          if (dps.length > datamain) {
+              dps.shift();
+          }
+        
+          chart.render();
+          dataLength++;
+          //console.log(dataLength);
+        };
+        var myValues=[];
+        var riskyBabe=1;
+        var numCount=1;
+        var updateResult=function(whoCares, numSeries){
+            numSeries = numSeries || 1;
+            for (var k=whoCares; k<numSeries; k++) {
+                myRes=resultValues[k];
+                if (myRes==0){
+                    kali="Paced Beat";
+                } else if (myRes==1){
+                     kali="Atrial Premature Contraction";
+                } else if (myRes==2){
+                     kali="Ventricular Escape Beat";
+                } else if (myRes==3){
+                     kali="Left Bundle Branch Block Beat";
+                } else if (myRes==4){
+                     kali="Normal";
+                } else if (myRes==5){
+                     kali="Right Bundle Branch Block Beat";
+                } else if (myRes==6){
+                     kali="Premature Ventricular Contraction";
+                } else if (myRes==8){
+                     kali="Checking for heartbeat...";
+                }
+                myValues.push(kali);
+                console.log(k)
+                console.log(resultValues[k])
+
+            }
+            if (myValues.length>numCount){
+                myValues.shift();
+            }
+            document.getElementById('result').innerHTML=myValues;
+            riskyBabe++;
+
+               //var myValues=resultValues[j];
+               //console.log(j)
+               //console.log(resultValues[j])
+               //document.getElementById('result').innerHTML=myValues;
+        };
+
+       function realTimeClock(){
+           var rtClock = new Date();
+           var hours=rtClock.getHours();
+           var minutes=rtClock.getMinutes();
+           var seconds=rtClock.getSeconds();
+
+           hours=("0"+ hours).slice(-2);
+           minutes=("0"+ minutes).slice(-2);
+           seconds=("0"+ seconds).slice(-2);
+
+           document.getElementById('clock').innerHTML=
+           hours+":"+minutes+":"+seconds;
+           var t=setTimeout(realTimeClock)
+
+        }
+
+
+        updateChart(0, dataLength);
+        updateResult(0, riskyBabe)
+        realTimeClock()
+        
+
+        setInterval(function(){updateChart(dataLength, dataLength+1), updateResult(riskyBabe, riskyBabe+1)}, updateInterval);
+
+       
+        //setInterval(updateResult(resultLength), updateInterval);
+        
+        }
+        </script>
+
+
+
+        
+       
+
+<style>
+    body{
+font-family: 'poppins', sans-serif;
+}
+
+*{
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+-webkit-fontt-smoothing:antialised;
+}
+
+header{
+
+clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 95%, 0% 100% );
+
+
+
+}
+
+.container{
+max-width: 1152px;
+padding:0 15px;
+margin:0 auto;
+display: inline-flexbox;
+}
+
+h1{
+display: flex;
+align-items: center;
+justify-content:center;
+margin-top: 30px;
+margin-bottom: 10px;
+text-decoration: none;
+text-transform: uppercase;
+transition:all .3s ease;
+position: center;
+
+
+
+}
+
+h1:hover{
+color: #898989;
+}
+
+h2{
+color: #161616;
+font-size: 25px;
+}
+
+
+#plot {
+height: 400px;
+width: 90%;
+box-shadow: 5px 5px 5px #888888;
+border-style: solid;
+border-width: 1px;
+padding-left: 0;
+padding-right: 0;
+margin-left: auto;
+margin-right: auto;
+margin-top: 10px;
+display: block;
+}
+
+#result{
+    padding-top: 40px;
+    padding-left: 300px;
+    display: inline-flex;
+    color: rgb(7, 7, 15);
+    border: rgb(92, 107, 243);
+    box-sizing: 50px;
+    font-size: 30px;
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#clock{
+    
+    margin-left: 1000px;
+    box-sizing: border-box;
+}
+</style>
+
+
+</head>
+<body>
+    <header>
+        <div class="container">
+         <h1> ECG monitoring </h1>
+        
+            <h2>Name:{{name}}</h2>
+            <h2> Age:{{age}} </h2>
+            <div id="clock"></div>
+        
+    </div>
+    </header>
+        
+
+
+
+
+<div id="chartContainer" style="height: 370px; width:100%;"></div>
+    <div id="result">    </div>
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+*{
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+-webkit-fontt-smoothing:antialised;
+}
+
+body {margin:0;}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+.history{
+    background-color: teal;
+}
+
+#clock{
+    display: inline-flex;
+    padding-right: 20px;
+    color:black;
+    border: cornsilk;
+    background-color: whitesmoke;
+}
+</style>
+</head>
+<body>
+    <script>
+           function realTimeClock(){
+           var rtClock = new Date();
+           var date=rtClock.getFullYear;
+           var hours=rtClock.getHours();
+           var minutes=rtClock.getMinutes();
+           var seconds=rtClock.getSeconds();
+
+           hours=("0"+ hours).slice(-2);
+           minutes=("0"+ minutes).slice(-2);
+           seconds=("0"+ seconds).slice(-2);
+
+           document.getElementById('Date').innerHTML=
+           date;
+           document.getElementById('clock').innerHTML=
+           hours+":"+minutes+":"+seconds;
+           var t=setTimeout(realTimeClock)
+
+        }
+
+        realTimeClock()
+    </script>
+   <div class="container">
+       
+   </div>
+
+<ul>
+    <!--<form action="/selectone" method="POST">
+        <li><a class="active" href="/frontPage" value="frontPage" type="status">Home</a></li>
+        <li><a href="#contact" type="status"> Contact</a></li>
+        <li><a href="/aboutus" type="status"> About</a></li>
+        <li style="float:center" type="status"><a href="/">Heart Rate Monitoring </a></li> 
+        <li style="float:right"><div class="history"><a href="/history">History</a></div></li>
+    </form> -->
+    <li><a class="active" href="/" type="status">Home</a></li>
+        <li><a href="#contact" type="status"> Contact</a></li>
+        <li><a href="#aboutus" type="status"> About</a></li>
+        <li style="float:center" type="status"><a href="#heart">Heart Rate Monitoring </a></li> 
+        <li style="float:right"><div class="history"><a href="/history">History</a></div></li>
+        <li style="float:right"><div class="logout"><a href="/logout">Log Out</a></div></li>
+  <!--<li style="float:right"><div id="clock"></div> </li> -->
+</ul>
+
+
+
+</body>
+</html>
